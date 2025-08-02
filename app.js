@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require('cors')
 const app = express();
 const port = 3030;
 // Importazione del router dei movie
@@ -12,6 +13,8 @@ const notFound = require("./middlewares/notFound");
 app.use(express.json());
 
 app.use(express.static("public"));
+
+app.use(cors())
 
 app.get("/", (req, res) => {
     res.send("Server dei movie in esecuzione!");
