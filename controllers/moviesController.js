@@ -1,4 +1,4 @@
-const connection = require("../data/moviesData.js");
+const connection = require("../data/connectionData.js");
 
 // Funzioni del controller per gestire le operazioni CRUD sui movie
 

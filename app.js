@@ -1,9 +1,12 @@
 const express = require("express");
-const cors = require('cors')
+const cors = require("cors");
 const app = express();
 const port = 3030;
 // Importazione del router dei movie
 const moviesRoute = require("./routers/movies");
+
+const reviewRoute = require("./routers/reviews");
+
 // Importazione del middleware per la gestione degli errori
 const errorHandler = require("./middlewares/errorsHandler");
 // Middleware per gestire le richieste non trovate
@@ -14,13 +17,15 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-app.use(cors())
+app.use(cors());
 
 app.get("/", (req, res) => {
     res.send("Server dei movie in esecuzione!");
 });
 
 app.use("/movies", moviesRoute);
+
+app.use("/reviews", reviewRoute);
 
 app.use(errorHandler);
 app.use(notFound);
