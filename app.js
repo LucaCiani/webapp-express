@@ -5,8 +5,6 @@ const port = 3030;
 // Importazione del router dei movie
 const moviesRoute = require("./routers/movies");
 
-const reviewRoute = require("./routers/reviews");
-
 // Importazione del middleware per la gestione degli errori
 const errorHandler = require("./middlewares/errorsHandler");
 // Middleware per gestire le richieste non trovate
@@ -24,8 +22,6 @@ app.get("/", (req, res) => {
 });
 
 app.use("/movies", moviesRoute);
-
-app.use("/reviews", reviewRoute);
 
 app.use(errorHandler);
 app.use(notFound);

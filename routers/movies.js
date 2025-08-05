@@ -4,18 +4,21 @@ const router = express.Router();
 // Importazione del controller dei movie
 const movieController = require("../controllers/moviesController");
 
+// Importazione del controller dei review
+const reviewsController = require("../controllers/reviewsController");
+
 // Definizione delle rotte per i movie
 // GET /movies - Elenco dei movie
 router.get("/", movieController.index);
 // GET /movies/:id - Dettagli di un movie specifico
 router.get("/:id", movieController.show);
-// POST /movies - Creazione di un nuovo movie
-router.post("/", movieController.store);
-// PUT /movies/:id - Aggiornamento di un movie specifico
-router.put("/:id", movieController.update);
-// PATCH /movies/:id - Modifica parziale di un movie specifico
-router.patch("/:id", movieController.modify);
-// DELETE /movies/:id - Cancellazione di un movie specifico
-router.delete("/:id", movieController.destroy);
+
+// Definizione delle rotte per i review
+// GET /reviews - Elenco dei review
+router.get("/reviews", reviewsController.index);
+// GET /reviews/:id - Dettagli di un review specifico
+router.get("/reviews/:id", reviewsController.show);
+// POST /reviews/:id/review - Inserimento di un nuovo review
+router.post("/reviews/:id", reviewsController.store);
 
 module.exports = router;

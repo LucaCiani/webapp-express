@@ -25,7 +25,22 @@ function show(req, res) {
     });
 }
 
+// insert the storeReview function
+function store(req, res) {
+    const { id } = req.params;
+    const { name, vote, text } = req.body;
+
+    const sql =
+        "INSERT INTO reviews (movie_id, name, text, vote) VALUES (?, ?, ?, ?)";
+    connection.query(sql, [id, name, text, vote], (err, results) => {
+        if (err)
+            return res.status(500).json({ error: "Database query failed" });
+        res.status(201);
+    });
+}
+// Esportazione delle funzioni del controller
 module.exports = {
     index,
     show,
+    store,
 };
